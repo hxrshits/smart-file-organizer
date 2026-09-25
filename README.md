@@ -1,43 +1,60 @@
-Smart File Organizer
+# Smart File Organizer
 
 A Python-based command-line utility that automatically organizes files into categorized folders based on their file extensions.
 
-The project is designed as a lightweight and practical file-management tool that can run locally on Linux, WSL, macOS, or Windows without external Python dependencies.
+The project is lightweight, practical, and runs locally without external Python packages.
 
-Features
-Automatically categorizes files by extension
-Supports Images, Documents, Videos, Audio, and Archives
-Moves unsupported file types into Others/
-Supports custom folder paths
-Provides a --dry-run mode for safe previews
-Prevents duplicate files from being overwritten
-Automatically creates destination folders
-Includes a command-line help menu
-Requires no external Python packages
-Works completely locally
-Version controlled using Git and GitHub
-Supported File Categories
-File Type	Folder
-JPG, JPEG, PNG, GIF, WEBP	Images
-PDF, DOC, DOCX, TXT, PPT, PPTX, XLS, XLSX	Documents
-MP4, MKV, AVI, MOV	Videos
-MP3, WAV, FLAC	Audio
-ZIP, RAR, 7Z, TAR, GZ	Archives
-Other extensions	Others
-How It Works
+---
+
+# Features
+
+- Automatically categorizes files by extension
+- Supports Images, Documents, Videos, Audio, and Archives
+- Moves unsupported file types into `Others/`
+- Supports custom folder paths
+- Provides a `--dry-run` mode
+- Prevents duplicate files from being overwritten
+- Automatically creates destination folders
+- Includes a command-line help menu
+- Requires no external Python packages
+- Works completely locally
+- Uses Git and GitHub for version control
+
+---
+
+# Supported File Categories
+
+| File Type | Folder |
+|---|---|
+| JPG, JPEG, PNG, GIF, WEBP | Images |
+| PDF, DOC, DOCX, TXT, PPT, PPTX, XLS, XLSX | Documents |
+| MP4, MKV, AVI, MOV | Videos |
+| MP3, WAV, FLAC | Audio |
+| ZIP, RAR, 7Z, TAR, GZ | Archives |
+| Other extensions | Others |
+
+---
+
+# How It Works
 
 The program:
 
-Takes a folder path from the command line.
-Scans the files inside the folder.
-Detects each file's extension.
-Matches the extension with a predefined category.
-Creates the required category folder.
-Moves the file into the appropriate folder.
-Checks for duplicate filenames.
-Creates a new filename when a duplicate exists.
-Example
-Before
+1. Takes a folder path from the command line.
+2. Scans the files inside the folder.
+3. Detects each file's extension.
+4. Matches the extension with a category.
+5. Creates the required folder.
+6. Moves the file.
+7. Checks for duplicate filenames.
+8. Creates a new filename when a duplicate exists.
+
+---
+
+# Example
+
+## Before
+
+```text
 Downloads/
 ├── photo.jpg
 ├── resume.pdf
@@ -45,7 +62,8 @@ Downloads/
 ├── song.mp3
 ├── backup.zip
 └── data.csv
-After
+
+## After
 Downloads/
 ├── Images/
 │   └── photo.jpg
@@ -59,46 +77,42 @@ Downloads/
 │   └── backup.zip
 └── Others/
     └── data.csv
-Requirements
+
+
+# Requirements
 Python 3
 Linux / WSL / macOS / Windows
 No external Python packages required
-Installation
-Clone the Repository
+# Installation
+## Clone the Repository
 git clone https://github.com/hxrshits/smart-file-organizer.git
-Enter the Project Directory
+## Enter the Project Directory
 cd smart-file-organizer
-Check Python
+## Check Python
 python3 --version
-Usage
-Organize a Folder
+# Usage
+## Organize a Folder
 python3 organizer.py Downloads
 
-Replace Downloads with the path of your target folder.
+Replace Downloads with the folder you want to organize.
 
-Dry Run
+## Dry Run
 
-Before actually moving files, use --dry-run to preview the changes:
+Preview changes without moving files:
 
 python3 organizer.py Downloads --dry-run
 
-Example output:
+Example:
 
 [DRY RUN] Would move: photo.jpg -> Images/
 [DRY RUN] Would move: resume.pdf -> Documents/
 [DRY RUN] Would move: movie.mp4 -> Videos/
 
 File organization complete!
-
-Nothing is moved when using --dry-run.
-
-Help
-
-Display the available commands:
-
+## Help
 python3 organizer.py --help
 
-Output:
+### Output:
 
 Smart File Organizer
 
@@ -109,80 +123,56 @@ Usage:
 Examples:
     python3 organizer.py Downloads
     python3 organizer.py Downloads --dry-run
-Current Directory
+# Current Directory
 
-If no folder is provided, the program uses the current directory:
+If no folder is provided:
 
 python3 organizer.py
-Duplicate File Protection
+# Duplicate File Protection
 
 The program prevents existing files from being overwritten.
 
-For example, if photo.jpg already exists:
-
-Images/
-└── photo.jpg
-
-and another file with the same name is moved, the program automatically creates:
+For example:
 
 Images/
 ├── photo.jpg
 └── photo_1.jpg
 
-If another duplicate exists:
+If another duplicate is found:
 
 Images/
 ├── photo.jpg
 ├── photo_1.jpg
 └── photo_2.jpg
-Safety
+# Safety
 
-The project includes a --dry-run mode so users can preview file movements before making changes.
-
-Example:
+The --dry-run option allows users to preview file movements before making changes.
 
 python3 organizer.py Downloads --dry-run
 
-The program only modifies the folder that you explicitly provide.
-
 Always use --dry-run first when working with an important folder.
 
-Project Structure
+# Project Structure
 smart-file-organizer/
 │
 ├── organizer.py
 ├── README.md
 └── .gitignore
-Technologies Used
+# Technologies Used
 Python 3
 Linux / WSL
 Git
 GitHub
-Python Modules
+# Python Modules
 os — filesystem operations
 shutil — moving files
 sys — command-line arguments
-Example Output
-Normal Mode
-Moved: photo.jpg -> Images/
-Moved: resume.pdf -> Documents/
-Moved: movie.mp4 -> Videos/
-Moved: song.mp3 -> Audio/
-Moved: backup.zip -> Archives/
-Moved: data.csv -> Others/
+# Testing
 
-File organization complete!
-Dry Run Mode
-[DRY RUN] Would move: photo.jpg -> Images/
-[DRY RUN] Would move: resume.pdf -> Documents/
-[DRY RUN] Would move: movie.mp4 -> Videos/
+The project was tested with multiple file types.
 
-File organization complete!
-Testing
+## Tested functionality:
 
-The project was tested using a local test directory containing multiple file types.
-
-Tested Functionality
 Image categorization
 Document categorization
 Video categorization
@@ -193,14 +183,13 @@ Duplicate filename handling
 Custom folder paths
 Dry-run mode
 Help command
-Test Command
+
+## Test command:
+
 python3 organizer.py test_downloads --dry-run
-Future Improvements
-
-Possible future improvements include:
-
+# Future Improvements
 Recursive folder scanning
-Support for additional file extensions
+More file extensions
 Custom category configuration
 Interactive CLI
 Undo functionality
@@ -210,7 +199,7 @@ Configuration file support
 Windows GUI
 Scheduled automatic organization
 Background folder monitoring
-Why This Project?
+# Why This Project?
 
 This project was built to gain practical experience with:
 
@@ -219,12 +208,12 @@ File-system automation
 Command-line interfaces
 Linux / WSL
 Git and GitHub
-Automation and problem solving
+Automation
 Software documentation
 
 The goal was to create a small utility that is actually useful rather than just a demonstration program.
 
-Author
+# Author
 
 Harshit Saini
 
@@ -232,6 +221,6 @@ B.Tech — Electronics & Communication Engineering (AIML)
 
 GitHub: https://github.com/hxrshits
 
-License
+# License
 
 This project is intended for educational and personal use.
